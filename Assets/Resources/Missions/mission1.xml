@@ -1,0 +1,37 @@
+<mission>
+    <name>Operation Snoopy</name>
+    <brief1>Retrieve 1 document from the </brief1>
+    <brief2>ambassadors office</brief2>
+    <size>21,11</size>
+    <next-mission>mission2</next-mission>
+
+    <entities>
+        <documents>16,9</documents>
+        <exit>0,7</exit>
+        <exit>0,8</exit>
+        <player>1,8</player>
+        <secguard>2,3</secguard>
+        <secguard>7,5</secguard>
+        <secguard>12,5</secguard>
+        <soldier>17,5</soldier>
+        <secguard>19,5</secguard>
+    </entities>
+
+    <map>
+        <texture>map1</texture>
+        <cover>
+y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,
+y,n,n,n,y,y,y,n,n,y,y,y,n,n,y,y,y,n,y,n,y,
+n,n,n,n,n,n,n,n,n,n,y,n,n,n,n,y,n,n,y,n,n,
+n,n,n,n,n,n,n,n,n,y,y,y,n,y,y,y,n,n,n,n,n,
+y,n,n,n,y,y,n,n,n,n,y,n,n,n,n,y,n,n,y,n,n,
+y,y,y,n,y,y,n,n,n,y,y,y,n,y,y,y,n,n,y,n,n,
+y,y,y,n,y,y,n,n,n,n,y,n,n,n,n,y,n,n,n,n,n,
+n,n,n,n,n,y,n,n,n,n,y,n,n,n,n,n,n,n,n,n,n,
+y,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,y,n,n,n,n,n,n,n,n,n,y,n,n,n,n,n,
+y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y
+        </cover>
+    </map>
+
+</mission>

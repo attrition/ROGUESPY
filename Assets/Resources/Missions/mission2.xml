@@ -1,0 +1,56 @@
+<mission>
+    <name>Operation Beagle</name>
+    <brief1>Find the 4 documents</brief1>
+    <brief2>They may be guarded by agents</brief2>
+    <size>31,21</size>
+
+    <entities>
+        <documents>11,12</documents>
+        <documents>21,12</documents>
+        <documents>17,2</documents>
+        <documents>4,19</documents>
+        <exit>0,2</exit>
+        <exit>0,3</exit>
+        <exit>30,1</exit>
+        <exit>30,2</exit>
+        <exit>30,19</exit>
+        <exit>30,18</exit>
+        <player>1,3</player>
+        <secguard>3,8</secguard>
+        <secguard>6,16</secguard>
+        <secguard>14,11</secguard>
+        <secguard>20,17</secguard>
+        <soldier>29,16</soldier>
+        <soldier>29,9</soldier>
+        <soldier>28,1</soldier>
+        <agent>19,2</agent>
+    </entities>
+
+    <map>
+        <texture>map2</texture>
+        <cover>
+y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,
+n,y,n,y,y,n,y,n,y,y,n,n,n,n,n,n,y,n,n,n,n,n,n,n,n,n,n,y,y,n,n,
+n,n,n,y,n,n,n,n,n,y,n,n,n,n,n,n,n,n,n,n,y,n,n,n,n,n,n,y,n,n,n,
+n,n,n,n,n,n,n,n,n,y,n,n,n,n,n,n,y,n,n,n,n,n,n,n,n,n,n,y,n,n,n,
+n,n,n,y,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,y,n,n,n,n,n,n,n,n,n,n,
+n,n,n,y,n,n,n,n,n,y,n,n,n,n,n,n,y,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,y,y,y,y,y,y,y,y,n,n,n,y,y,y,y,y,y,y,y,n,n,n,
+n,n,n,y,n,n,n,n,n,y,y,y,y,y,y,y,y,n,n,n,y,y,y,y,y,y,y,y,n,n,n,
+n,n,n,y,y,n,n,n,y,y,y,y,n,n,n,y,y,n,n,n,y,y,n,y,y,n,y,y,n,n,n,
+n,n,n,y,y,y,y,y,y,y,n,n,n,n,n,n,n,n,n,n,y,n,n,y,y,n,n,y,n,y,y,
+n,n,n,y,y,y,y,y,y,y,n,n,y,y,n,n,y,n,n,n,y,n,n,n,n,n,n,y,n,y,y,
+n,n,n,n,n,n,n,n,y,y,y,n,n,n,n,n,y,n,n,n,y,y,n,n,n,n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,y,y,y,y,y,y,y,y,n,n,n,y,y,y,y,y,y,y,y,n,n,n,
+n,y,n,n,n,n,n,n,n,y,y,y,y,y,y,y,y,n,n,n,y,y,y,y,y,y,y,y,n,n,n,
+y,y,y,y,y,y,n,n,n,y,y,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+y,y,y,y,y,y,n,n,n,y,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,
+y,n,n,y,y,y,n,n,n,y,n,n,n,n,n,n,y,y,y,y,y,y,n,n,y,y,y,y,n,n,n,
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,y,y,y,y,y,y,y,n,n,y,y,y,y,n,n,n,
+n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,y,y,n,n,n,n,n,n,n,y,y,y,n,n,n,
+y,n,n,y,y,y,n,n,n,n,n,n,n,n,n,n,y,y,n,n,n,n,n,n,n,n,y,y,y,n,n,
+y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y,y
+        </cover>
+    </map>
+
+</mission>
