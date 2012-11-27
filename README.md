@@ -27,3 +27,6 @@ You have 5 Action-Points (AP) to use per round. Actions cost _x_ AP:
 ## Credits:
 Game by [@attrition0](http://www.twitter.com/attrition0) - [a study in pixels](http://astudyinpixels.tumblr.com)  
 Character design by [@KenneyWings](http://www.twitter.com/kenneywings) - [Kenney.nl](http://www.kenney.nl)
+
+## Source code notes
+The Charity Game Jam was a 48 hour game jam held over the weekend of November 23rd, 2012. Due to limitations in time, many atrocities were commited in the name of reaching the finish line with a complete game. Do not consider the code within this repository to represent best practices!
