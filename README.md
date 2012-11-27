@@ -23,3 +23,7 @@ You have 5 Action-Points (AP) to use per round. Actions cost _x_ AP:
 * Enemies have their own AP and will chase you down if they see you, make sure you get the first shot
 * The rifle is a significant upgrade, if you can kill a soldier and take it from him!
 * Some levels have more than one exit
+
+## Credits:
+Game by [@attrition0](http://www.twitter.com/attrition0) - [a study in pixels](http://astudyinpixels.tumblr.com)  
+Character design by [@KenneyWings](http://www.twitter.com/kenneywings) - [Kenney.nl](http://www.kenney.nl)
