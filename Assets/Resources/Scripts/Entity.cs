@@ -182,6 +182,12 @@ public class Entity : MonoBehaviour
         AP -= TAKE_AP_COST;
     }
 
+    public void Attacked()
+    {
+        if (State != EntState.Player)
+            State = EntState.Active;
+    }
+
     public void Attack(Entity ent)
     {
         var dist = (int)Vector2.Distance(Position, ent.Position);
@@ -194,6 +200,8 @@ public class Entity : MonoBehaviour
 
         SpawnBullet(Position, ent.Position);
         SpawnHitResult(ent.Position, hit);
+        
+        ent.Attacked();
 
         if (hit)
         {

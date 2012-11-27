@@ -38,6 +38,7 @@ public class Game : MonoBehaviour
 
     // entities
     private List<Entity> entities;
+    private Stack<Entity> entsToProcess;
     private Entity player;
     private List<Item> items;
     private List<Exit> exits;
@@ -53,7 +54,6 @@ public class Game : MonoBehaviour
     private bool exitEnabled;
 
     // turn information
-    private int turn;
     private Entity turnEnt;
     private State state;
 
@@ -121,17 +121,19 @@ public class Game : MonoBehaviour
     {
         map.UpdateEntities(entities);
 
-        // player gets first move
-        if (firstTurn)
+        if (entsToProcess.Count == 0)
         {
-            for (int i = 0; i < entities.Count; i++)
-                if (entities[i] == player)
-                    turn = i;
-        }
-        else
-            turn = (turn + 1) % entities.Count;
+            entsToProcess = new Stack<Entity>();
+            // add non-players first
+            foreach (var ent in entities)
+                if (ent != player)
+                    entsToProcess.Push(ent);
 
-        turnEnt = entities[turn];
+            // player gets first move
+            entsToProcess.Push(player);
+        }
+
+        turnEnt = entsToProcess.Pop();
         turnEnt.AP = turnEnt.MaxAP;
 
         if (turnEnt == player)
@@ -392,6 +394,7 @@ public class Game : MonoBehaviour
         entities = new List<Entity>();
         items = new List<Item>();
         exits = new List<Exit>();
+        entsToProcess = new Stack<Entity>();
 
         totalObjectives = 0;
         objectivesInHand = 0;
@@ -651,6 +654,9 @@ public class Game : MonoBehaviour
                 if (ent.State == EntState.Dead)
                     KillEntity(ent);
 
+                // no enemies in sight, leave targeting mode (relevant with rifles)
+                if (entitiesInSight == null || entitiesInSight.Count < 1)
+                    state = State.PlayerSelectAction;
                 redraw = true;
             }
         }
@@ -817,6 +823,27 @@ public class Game : MonoBehaviour
 
             entitiesInSight.Remove(ent);
             entities.Remove(ent);
+
+            // remove ent from turn stack
+            // temp push/pop it to another stack
+            // don't push the dead ent back
+            var tempStack = new Stack<Entity>();
+
+            while (entsToProcess.Count > 0)
+            {
+                if (entsToProcess.Peek() != ent)
+                    tempStack.Push(entsToProcess.Pop());
+                else
+                {
+                    // skipped dead ent, we can push back from temp now
+                    entsToProcess.Pop();
+                    break;
+                }
+            }
+
+            while (tempStack.Count > 0)
+                entsToProcess.Push(tempStack.Pop());
+
             Destroy(ent.gameObject);
         }
         else
