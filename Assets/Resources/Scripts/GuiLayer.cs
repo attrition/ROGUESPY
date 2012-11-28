@@ -65,6 +65,7 @@ public class GUILayer : MonoBehaviour
 
     public void RefreshGUI()
     {
+        InitGuiColors();
         InitGuiTex();
     }
 
