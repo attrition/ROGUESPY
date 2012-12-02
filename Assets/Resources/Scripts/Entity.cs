@@ -92,10 +92,10 @@ public class Entity : MonoBehaviour
 
     public void DoAITurn(Map map, Entity player)
     {
-        SetEntityStateTex();
-
         if (State == EntState.Player)
             return;
+
+        SetEntityStateTex();
 
         bool vision = map.HasVision(Position, player.Position);
 
@@ -121,37 +121,51 @@ public class Entity : MonoBehaviour
         {
             var dist = (int)Vector2.Distance(Position, player.Position);
 
-            if (AP == MOVE_AP_COST && Vector2.Distance(Position, player.Position) > 1.01f)
+            // if can't see player, move towards goal
+            if (!vision)
             {
                 WalkTowardsGoal(map);
+                Debug.Log(Name + ":no vision:1");
             }
             else
             {
-                // will close to 66% range (before accuracy modification)
-                if (dist <= Weapon.Mark && AP >= Weapon.APCost)
+                // close to mark range
+                if (dist > Weapon.Mark && AP >= MOVE_AP_COST)
                 {
-                    if (map.HasVision(Position, player.Position) && dist <= Weapon.MaxRange)
-                        Attack(player);
-                    else
-                        if (AP >= MOVE_AP_COST)
-                            WalkTowardsGoal(map);
+                    WalkTowardsGoal(map);
+                    Debug.Log(Name + ":walk:2");
                 }
                 else
                 {
-                    if (AP >= MOVE_AP_COST && Vector2.Distance(Position, player.Position) > 1.01f)
-                        WalkTowardsGoal(map);
+                    if (dist <= Weapon.Mark && AP >= Weapon.APCost)
+                    {
+                        Attack(player);
+                        Debug.Log(Name + ":attack:3");
+                    }
                     else
-                        AP = 0;
+                    {
+                        if (dist > 1 && AP >= MOVE_AP_COST)
+                        {
+                            WalkTowardsGoal(map);
+                            Debug.Log(Name + ":walk:4");
+                        }
+                        else
+                        {
+                            AP = 0;
+                            Debug.Log(Name + ":no move:5");
+                        }
+                    }
                 }
-
-                if (AP < MOVE_AP_COST) // no actions viable under 1 ap, end turn
-                    AP = 0;
             }
+
+            if (AP < MOVE_AP_COST)
+                AP = 0;
         }
 
-        if (Position == Goal)
+        if (Position == Goal) // reached goal
         {
-            if (!vision)
+            // check vision again
+            if (!map.HasVision(Position, player.Position))
                 State = EntState.Idle;
         }
 
@@ -200,7 +214,7 @@ public class Entity : MonoBehaviour
 
         SpawnBullet(Position, ent.Position);
         SpawnHitResult(ent.Position, hit);
-        
+
         ent.Attacked();
 
         if (hit)
@@ -264,7 +278,7 @@ public class Entity : MonoBehaviour
                 newPos = pos;
 
             SetPosition(newPos);
-            AP -= 1;
+            AP -= MOVE_AP_COST;
         }
     }
 

@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
 
     public int TileSize;
     public float Scale;
+    public float targetDistance;
 
     // Use this for initialization
     void Start()
@@ -27,7 +28,7 @@ public class Bullet : MonoBehaviour
         pos += new Vector3(line.x * dt, line.y * dt, 0);
         this.gameObject.transform.position = pos;
 
-        if (Vector2.Distance(pos, end) < (TileSize / 2))
+        if (Vector2.Distance(pos, start) > targetDistance)
         {
             Destroy(this.gameObject);
         }
@@ -66,5 +67,6 @@ public class Bullet : MonoBehaviour
         this.transform.position = bulletStart;
         this.start = bulletStart;
         this.end = bulletEnd;
+        this.targetDistance = Vector2.Distance(bulletStart, bulletEnd);
     }
 }

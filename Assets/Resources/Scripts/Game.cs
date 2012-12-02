@@ -769,8 +769,11 @@ public class Game : MonoBehaviour
             if (doTurn)
                 turnEnt.DoAITurn(map, player);
 
-            if (turnEnt.AP < 1)
+            if (turnEnt.AP < Entity.MOVE_AP_COST)
+            {
+                Debug.Log("turn ends for " + turnEnt.Name);
                 NextTurn();
+            }
         }
         #endregion
 
