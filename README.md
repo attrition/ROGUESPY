@@ -25,7 +25,7 @@ You have 5 Action-Points (AP) to use per round. Actions cost _x_ AP:
 * Some levels have more than one exit
 
 ## Credits:
-Game by [@attrition0](http://www.twitter.com/attrition0) - [a study in pixels](http://astudyinpixels.tumblr.com)
+Game by [@attrition0](http://www.twitter.com/attrition0) - [a study in pixels](http://astudyinpixels.tumblr.com)  
 Character design by [@KenneyWings](http://www.twitter.com/kenneywings) - [Kenney.nl](http://www.kenney.nl)
 
 ## Source code notes
