@@ -51,10 +51,10 @@ public class Entity : MonoBehaviour
         InitMesh();
 
         this.gameObject.AddComponent<AudioSource>();
-        audio.maxDistance = 100;
-        audio.minDistance = 0;
-        audio.loop = false;
-        audio.volume = 1;
+        GetComponent<AudioSource>().maxDistance = 100;
+        GetComponent<AudioSource>().minDistance = 0;
+        GetComponent<AudioSource>().loop = false;
+        GetComponent<AudioSource>().volume = 1;
 
         silentShootSound = Resources.Load("Sounds/silencedShoot") as AudioClip;
         shootSound = Resources.Load("Sounds/shoot") as AudioClip;
@@ -83,10 +83,10 @@ public class Entity : MonoBehaviour
                         EntityStateTex.SetPixel(x, y, stateTex.GetPixel(x, y));
 
             EntityStateTex.Apply();
-            this.renderer.material.SetTexture("_MainTex", EntityStateTex);
+            this.GetComponent<Renderer>().material.SetTexture("_MainTex", EntityStateTex);
         }
         else
-            this.renderer.material.SetTexture("_MainTex", EntityTex);
+            this.GetComponent<Renderer>().material.SetTexture("_MainTex", EntityTex);
 
     }
 
@@ -208,9 +208,9 @@ public class Entity : MonoBehaviour
         var hit = Accuracy.AttemptHit(Weapon, dist, AccuracyMod);
 
         if (Weapon.Silenced)
-            audio.PlayOneShot(silentShootSound);
+            GetComponent<AudioSource>().PlayOneShot(silentShootSound);
         else
-            audio.PlayOneShot(shootSound);
+            GetComponent<AudioSource>().PlayOneShot(shootSound);
 
         SpawnBullet(Position, ent.Position);
         SpawnHitResult(ent.Position, hit);
@@ -220,7 +220,7 @@ public class Entity : MonoBehaviour
         if (hit)
         {
             ent.Health -= Weapon.Damage;
-            audio.PlayOneShot(hitSound);
+            GetComponent<AudioSource>().PlayOneShot(hitSound);
         }
 
         if (ent.Health <= 0)

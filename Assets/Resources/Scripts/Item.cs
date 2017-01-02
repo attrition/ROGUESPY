@@ -63,7 +63,7 @@ public class Item : MonoBehaviour
             else
                 tex = Resources.Load("Textures/obj-overlay-on") as Texture2D;
 
-            this.renderer.material.SetTexture("_MainTex", tex);
+            this.GetComponent<Renderer>().material.SetTexture("_MainTex", tex);
         }
     }
 

@@ -90,14 +90,14 @@ public class GUILayer : MonoBehaviour
                     guiTex.SetPixel(x + xx, y + yy, block[yy * width + xx]);
         
         guiTex.Apply();
-        renderer.material.SetTexture("_MainTex", guiTex);
+        GetComponent<Renderer>().material.SetTexture("_MainTex", guiTex);
     }
 
     public void AddTexture(Texture2D tex, int x, int y)
     {
         guiTex.SetPixels(x, y, tex.width, tex.height, tex.GetPixels());
         guiTex.Apply();
-        renderer.material.SetTexture("_MainTex", guiTex);
+        GetComponent<Renderer>().material.SetTexture("_MainTex", guiTex);
     }
 
     void Update()

@@ -77,6 +77,6 @@ class HitDisplay : MonoBehaviour
         else
             tex = Resources.Load("Textures/Miss") as Texture2D;
 
-        this.gameObject.renderer.material.SetTexture("_MainTex", tex);
+        this.gameObject.GetComponent<Renderer>().material.SetTexture("_MainTex", tex);
     }
 }

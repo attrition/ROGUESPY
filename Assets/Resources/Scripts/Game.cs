@@ -29,7 +29,6 @@ public class Game : MonoBehaviour
 
     // class necessities
     private BackgroundMaker bg;
-    private GameObject playerObj;
     private XmlDocument doc;
     private GUILayer gui;
     private Map map;
@@ -102,11 +101,11 @@ public class Game : MonoBehaviour
     void InitSounds()
     {
         this.gameObject.AddComponent<AudioSource>();
-        audio.maxDistance = 100;
-        audio.minDistance = 0;
-        audio.loop = false;
-        audio.volume = 1;
-        audio.playOnAwake = false;
+        GetComponent<AudioSource>().maxDistance = 100;
+        GetComponent<AudioSource>().minDistance = 0;
+        GetComponent<AudioSource>().loop = false;
+        GetComponent<AudioSource>().volume = 1;
+        GetComponent<AudioSource>().playOnAwake = false;
 
         moveSound = Resources.Load("Sounds/move") as AudioClip;
         selectSound = Resources.Load("Sounds/select") as AudioClip;
@@ -340,7 +339,7 @@ public class Game : MonoBehaviour
         gui = guiObj.AddComponent<GUILayer>();
         gui.Scale = Scale;
         gui.Font = font;
-
+        gui.transform.position = new Vector3(0f, 0f, -8f);
         overlay = new Overlay(TileSize, Scale);
     }
 
@@ -363,7 +362,7 @@ public class Game : MonoBehaviour
         CentreCameraOnEntity(player);
         
         if (missionNum == 1)
-            audio.PlayOneShot(missionStartSound);
+            GetComponent<AudioSource>().PlayOneShot(missionStartSound);
     }
 
     void InitMissionDetails()
@@ -476,11 +475,11 @@ public class Game : MonoBehaviour
         if (finalMission)
         {
             state = State.GameComplete;
-            audio.PlayOneShot(gameCompleteSound);
+            GetComponent<AudioSource>().PlayOneShot(gameCompleteSound);
         }
         else
         {
-            audio.PlayOneShot(missionSuccessSound);
+            GetComponent<AudioSource>().PlayOneShot(missionSuccessSound);
             InitGame();
         }
     }
@@ -554,7 +553,7 @@ public class Game : MonoBehaviour
             }
 
             if (redraw) // moved
-                audio.PlayOneShot(moveSound);
+                GetComponent<AudioSource>().PlayOneShot(moveSound);
 
             // cancel state
             if (Input.GetKeyDown(BButton))
@@ -699,7 +698,7 @@ public class Game : MonoBehaviour
             }
 
             if (redraw) // moved
-                audio.PlayOneShot(selectSound);
+                GetComponent<AudioSource>().PlayOneShot(selectSound);
 
             if (Input.GetKeyDown(AButton))
             {
@@ -707,7 +706,7 @@ public class Game : MonoBehaviour
 
                 if (pickup != null)
                 {
-                    audio.PlayOneShot(pickupSound);
+                    GetComponent<AudioSource>().PlayOneShot(pickupSound);
 
                     if (pickup.Type == ItemType.Document)
                     {
@@ -852,7 +851,7 @@ public class Game : MonoBehaviour
         else
         {
             state = State.GameOver;
-            audio.PlayOneShot(missionFailSound);
+            GetComponent<AudioSource>().PlayOneShot(missionFailSound);
         }
     }
 
@@ -938,11 +937,6 @@ public class Game : MonoBehaviour
 
         Camera.main.transform.position = (new Vector3(pos.x, pos.y, 0) * TileSize * Scale);
         Camera.main.transform.position += new Vector3(0, 0, -10);
-
-        var newGuiPos = Camera.main.transform.position;
-        newGuiPos.x -= Screen.width / 2;
-        newGuiPos.y -= Screen.height / 2;
-        gui.gameObject.transform.position = newGuiPos;
     }
 
     void CheckEnemiesHaveVisionOnPlayer()

@@ -76,7 +76,7 @@ class Overlay
         else
             tex = SelectionTex;
 
-        go.renderer.material.SetTexture("_MainTex", tex);
+        go.GetComponent<Renderer>().material.SetTexture("_MainTex", tex);
     }
 
     public void SetPosition(Vector2 newPos)
